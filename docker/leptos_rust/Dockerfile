@@ -1,6 +1,0 @@
-FROM rust:1.67
-
-
-
-EXPOSE 16
-

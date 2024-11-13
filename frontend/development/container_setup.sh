@@ -15,6 +15,8 @@ for file in /root/Core/home/*(D); do
   ln -sf $file /root
 done
 
+./root/Core/apps/fzf/install
+
 # Install rust
 #curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

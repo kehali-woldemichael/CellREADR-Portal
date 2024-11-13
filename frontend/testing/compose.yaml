@@ -1,0 +1,14 @@
+services:
+  frontend:
+    container_name: test_frontend
+    build: .
+    #volumes:
+    #working_dir: /root
+    #entrypoint: ["./container_setup.sh"]
+    #command: ["/bin/zsh -c"]
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ports:
+      - "8200:80"
+    expose:
+      - 16

@@ -11,3 +11,4 @@ cargo install cargo-generate cargo-feature cargo-info
 #cargo install cargo-pgo cargo-profiler cargo-script 
 # CLI 
 cargo install bat clap du-dust eza fd-find hyperfine ripgrep zoxide
+

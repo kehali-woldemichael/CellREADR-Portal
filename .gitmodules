@@ -1,0 +1,4 @@
+[submodule "frontend/development/Core"]
+	path = frontend/development/Core
+	url = git@github.com:kehali-woldemichael/Core.git
+	branch = ubuntu
