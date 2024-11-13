@@ -28,9 +28,12 @@ FROM debian:bookworm-slim as runtime
 WORKDIR /app
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends openssl ca-certificates \
+  && apt-get install -y nodejs npm \
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -D tailwindcss
 
 # Copy the server binary to the /app directory
 COPY --from=builder /app/target/release/testing /app/
