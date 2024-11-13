@@ -12,3 +12,7 @@ cargo install cargo-generate cargo-feature cargo-info
 # CLI 
 cargo install bat clap du-dust eza fd-find hyperfine ripgrep zoxide
 
+sudo npm install -g dockerfile-language-server-nodejs
+sudo npm i -g bash-language-server
+sudo npm i -g yaml-language-server
+

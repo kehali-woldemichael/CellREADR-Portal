@@ -11,4 +11,9 @@ services:
     ports:
       - "8200:80"
     expose:
+      - 80
       - 16
+  networks:
+    network1:
+      name: db-network
+      external: true

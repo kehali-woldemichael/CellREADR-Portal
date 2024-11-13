@@ -45,7 +45,6 @@ COPY --from=builder /app/Cargo.toml /app/
 ENV RUST_LOG="info"
 ENV LEPTOS_SITE_ADDR="0.0.0.0:80"
 ENV LEPTOS_SITE_ROOT="site"
-EXPOSE 80
 
 # Run the server
 CMD ["/app/testing"]

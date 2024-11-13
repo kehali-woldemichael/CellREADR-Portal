@@ -9,7 +9,8 @@ RUN apt-get update && apt upgrade -y && apt-get install -y \
     language-pack-en-base \
     curl wget iproute2 \
     git openssh-client \
-    build-essential pkg-config make cmake libssh-dev\
+    build-essential pkg-config make cmake libssh-dev \
+    nodejs npm \
     && rm -rf /var/lib/apt/lists/* 
 
 #COPY Core Core
@@ -19,4 +20,3 @@ RUN ["./image_setup.sh"]
 COPY container_setup.sh container_setup.sh
 
 SHELL ["zsh"]
-EXPOSE 16
