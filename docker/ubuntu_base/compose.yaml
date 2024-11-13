@@ -1,0 +1,16 @@
+services:
+  frontend:
+    container_name: frontend
+    build: .
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ~/CellREADR-Backend/Docker/DockerFiles/ubuntu_base/Core:/root/Core
+    working_dir: /root
+    entrypoint: ["./container_setup.sh"]
+    command: ["/bin/zsh -c"]
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    ports:
+      - "8200:80"
+    expose:
+      - 80

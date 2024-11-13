@@ -1,0 +1,13 @@
+[Unit]
+Description=Script Daemon Restarting Docker Containers
+
+[Service]
+Type=simple
+#User=
+#Group=
+ExecStart=/home/kbw29/CellREADR-Portal/services/service_docker_restart_containers.zsh
+Restart=on-failure
+StandardOutput=file:%h/log_file
+
+[Install]
+WantedBy=default.target
