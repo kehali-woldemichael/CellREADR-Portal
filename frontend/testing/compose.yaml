@@ -2,6 +2,8 @@ services:
   frontend:
     container_name: test_frontend
     build: .
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
     ports:
       - "8200:80"
     expose:
