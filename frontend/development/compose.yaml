@@ -5,9 +5,9 @@ services:
     volumes:
       - ~/.ssh:/root/.ssh
       - ~/CellREADR-Portal/frontend/development/Core:/root/Core
-      - ~/CellREADR-Portal/frontend/development/leptos_dev:/root/leptos_dev
+      - ~/CellREADR-Portal/frontend/development/cellreadr-frontend:/root/cellreadr-frontend
     working_dir: /root
-    entrypoint: ["./container_setup.sh"]
+    entrypoint: ["./container_setup.zsh"]
     command: ["/bin/zsh -c"]
     stdin_open: true # docker run -i
     tty: true        # docker run -t

@@ -15,8 +15,10 @@ RUN apt-get update && apt upgrade -y && apt-get install -y \
 
 #COPY Core Core
 WORKDIR /root
-COPY image_setup.sh image_setup.sh
-RUN ["./image_setup.sh"]
-COPY container_setup.sh container_setup.sh
+COPY rust_setup.zsh rust_setup.zsh
+RUN ["./rust_setup.zsh"]
+COPY image_setup.zsh image_setup.zsh
+RUN ["./image_setup.zsh"]
+COPY container_setup.zsh container_setup.zsh
 
 SHELL ["zsh"]

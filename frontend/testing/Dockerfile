@@ -19,7 +19,7 @@ RUN rustup target add wasm32-unknown-unknown
 # Make an /app dir, which everything will eventually live in
 RUN mkdir -p /app
 WORKDIR /app
-COPY . .
+COPY cellreadr-frontend .
 
 # Build the app
 RUN cargo leptos build --release -vv
@@ -49,5 +49,7 @@ ENV RUST_LOG="info"
 ENV LEPTOS_SITE_ADDR="0.0.0.0:80"
 ENV LEPTOS_SITE_ROOT="site"
 
+# Run tailwindcss
+RUN zsh /app/cellreadr-frontend/run_tailwind.zsh
 # Run the server
-CMD ["/app/testing"]
+CMD ["/app/cellreadr-frontend/app"]

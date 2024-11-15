@@ -2,3 +2,11 @@
 	path = frontend/development/Core
 	url = git@github.com:kehali-woldemichael/Core.git
 	branch = ubuntu
+[submodule "frontend/development/cellreadr-frontend"]
+	path = frontend/development/cellreadr-frontend
+	url = git@gitlab.com:huang8254544/cellreadr-frontend.git
+	branch = development
+[submodule "frontend/testing/cellreadr-frontend"]
+	path = frontend/testing/cellreadr-frontend
+	url = git@gitlab.com:huang8254544/cellreadr-frontend.git
+	branch = testing
