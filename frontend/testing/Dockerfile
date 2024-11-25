@@ -21,7 +21,7 @@ RUN mkdir -p /config
 WORKDIR /config
 # Installs nvm (node version manager)
 RUN export XDG_CONFIG_HOME="/config" \
-    && PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash'
+  && PROFILE=/dev/null bash -c 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash'
 # Loads nvm & install nodejs & install tailwindcss
 RUN . /config/nvm/nvm.sh && nvm install 22 && npm install -D tailwindcss
 
@@ -32,19 +32,20 @@ COPY cellreadr-frontend .
 
 # Build the app
 RUN . /config/nvm/nvm.sh \
-    && cargo leptos build --release -vv 
+  && cargo leptos build --release -vv 
 
 
 FROM debian:bookworm-slim AS runtime
 WORKDIR /app
 RUN apt-get update -y \
   && apt-get install -y --no-install-recommends openssl ca-certificates \
-  && apt-get install -y zsh nodejs npm \
+  && apt-get install -y zsh nodejs npm pip neovim\
   && apt-get autoremove -y \
   && apt-get clean -y \
   && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -D tailwindcss
+RUN pip install pygenomeviz --break-system-packages
 
 # Copy the server binary to the /app directory
 COPY --from=builder /app/target/release/app /app/
@@ -59,6 +60,11 @@ COPY --from=builder /app/Cargo.toml /app/
 # Transfering over files for tailwindcss
 COPY --from=builder /app/input.css /app/
 COPY --from=builder /app/style /app/style
+COPY --from=builder /app/tailwind.config.js /app/
+
+# For generating sequence maps
+COPY --from=builder /app/python-modules /app/python-modules
+COPY --from=builder /app/temp /app/temp
 
 # Set any required env variables and
 ENV RUST_LOG="info"
